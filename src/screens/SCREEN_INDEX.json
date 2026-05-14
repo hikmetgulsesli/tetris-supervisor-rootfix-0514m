@@ -1,0 +1,201 @@
+[
+  {
+    "screenId": "7193749f0a4c45749ee08d29a122e5b4",
+    "title": "Pause Overlay",
+    "componentName": "PauseOverlay",
+    "file": "src/screens/PauseOverlay.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "resume-operation-1",
+        "kind": "button",
+        "label": "RESUME OPERATION",
+        "index": 0
+      },
+      {
+        "id": "restart-sequence-2",
+        "kind": "button",
+        "label": "RESTART SEQUENCE",
+        "index": 1
+      },
+      {
+        "id": "abort-to-menu-3",
+        "kind": "button",
+        "label": "ABORT TO MENU",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "screenId": "dfacf1fb1c0349d897ebff426ac97ba5",
+    "title": "Controls Help",
+    "componentName": "ControlsHelp",
+    "file": "src/screens/ControlsHelp.tsx",
+    "buttons": 1,
+    "inputs": 0,
+    "links": 2,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "screenId": "44c6112dea754fd08f7dde057a8ab74e",
+    "title": "Game Over",
+    "componentName": "GameOver",
+    "file": "src/screens/GameOver.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 3,
+    "actions": [
+      {
+        "id": "replay-session-1",
+        "kind": "button",
+        "label": "REPLAY SESSION",
+        "index": 0
+      },
+      {
+        "id": "submit-score-2",
+        "kind": "button",
+        "label": "SUBMIT SCORE",
+        "index": 1
+      },
+      {
+        "id": "main-menu-3",
+        "kind": "button",
+        "label": "MAIN MENU",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "screenId": "d0e8795533d14b21ab4ef0b0d7042d1e",
+    "title": "Main Menu",
+    "componentName": "MainMenu",
+    "file": "src/screens/MainMenu.tsx",
+    "buttons": 7,
+    "inputs": 0,
+    "links": 3,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "start-new-session-4",
+        "kind": "button",
+        "label": "START NEW SESSION",
+        "index": 3
+      },
+      {
+        "id": "resume-5",
+        "kind": "button",
+        "label": "RESUME",
+        "index": 4
+      },
+      {
+        "id": "controls-6",
+        "kind": "button",
+        "label": "CONTROLS",
+        "index": 5
+      },
+      {
+        "id": "leaderboard-7",
+        "kind": "button",
+        "label": "LEADERBOARD",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "3fa11f40f3eb4d029a0654c92d13c906",
+    "title": "Game Board",
+    "componentName": "GameBoard",
+    "file": "src/screens/GameBoard.tsx",
+    "buttons": 10,
+    "inputs": 0,
+    "links": 4,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "initiate-session-4",
+        "kind": "button",
+        "label": "INITIATE SESSION",
+        "index": 3
+      },
+      {
+        "id": "pause-5",
+        "kind": "button",
+        "label": "PAUSE",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      },
+      {
+        "id": "button-7-7",
+        "kind": "button",
+        "label": "Button 7",
+        "index": 6
+      },
+      {
+        "id": "button-8-8",
+        "kind": "button",
+        "label": "Button 8",
+        "index": 7
+      },
+      {
+        "id": "hold-9",
+        "kind": "button",
+        "label": "HOLD",
+        "index": 8
+      },
+      {
+        "id": "button-10-10",
+        "kind": "button",
+        "label": "Button 10",
+        "index": 9
+      }
+    ]
+  }
+]
