@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Active Gameplay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#273649",
+                      "on-primary-container": "#798098",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "error": "#ffb4ab",
+                      "on-primary": "#283044",
+                      "on-surface": "#d5e3fd",
+                      "surface-container-lowest": "#010f21",
+                      "on-tertiary-fixed": "#271901",
+                      "inverse-primary": "#565e74",
+                      "primary": "#bec6e0",
+                      "surface-dim": "#051426",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-variant": "#273649",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-tertiary": "#3e2d11",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "on-secondary-fixed": "#001f25",
+                      "on-surface-variant": "#c6c6cd",
+                      "secondary-container": "#00cbe6",
+                      "tertiary-container": "#231500",
+                      "surface": "#051426",
+                      "on-tertiary-container": "#957d5a",
+                      "on-background": "#d5e3fd",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "outline-variant": "#45464d",
+                      "outline": "#909097",
+                      "inverse-on-surface": "#233144",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#fcdeb5",
+                      "surface-container-high": "#1c2b3e",
+                      "surface-bright": "#2c3a4e",
+                      "secondary-fixed": "#a2eeff",
+                      "error-container": "#93000a",
+                      "on-secondary-container": "#00515d",
+                      "background": "#051426",
+                      "secondary": "#5de6ff",
+                      "surface-tint": "#bec6e0",
+                      "secondary-fixed-dim": "#2fd9f4",
+                      "primary-container": "#0f172a",
+                      "surface-container-low": "#0d1c2f",
+                      "primary-fixed": "#dae2fd",
+                      "on-error": "#690005",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container": "#122033",
+                      "on-secondary": "#00363e",
+                      "inverse-surface": "#d5e3fd",
+                      "tertiary": "#dec29a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "touch_target": "44px",
+                      "panel_gap": "16px",
+                      "container_padding": "24px",
+                      "grid_gutter": "2px"
+              },
+              "fontFamily": {
+                      "label-data": ["JetBrains Mono"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "body-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-data": ["16px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-container_padding py-base max-w-full bg-surface dark:bg-surface border-b border-outline-variant docked full-width top-0 z-50">
+<div class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary dark:text-primary">
+            TETRIS SUPERVISOR
+        </div>
+<div class="flex gap-4 items-center">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined">leaderboard</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 pt-20 bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 z-40">
+<div class="px-container_padding pb-panel_gap border-b border-outline-variant mb-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">SUPERVISOR_OS</div>
+<div class="font-headline-md text-headline-md text-secondary">v4.0.2-STABLE</div>
+</div>
+<ul class="flex-1 flex flex-col">
+<li>
+<a class="flex items-center gap-3 px-container_padding py-3 text-secondary border-r-2 border-secondary bg-surface-container-high transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">terminal</span>
+                        Command
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-container_padding py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+                        Training
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-container_padding py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">history</span>
+                        Archives
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-container_padding py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">insights</span>
+                        Telemetry
+                    </a>
+</li>
+</ul>
+<div class="p-container_padding border-t border-outline-variant">
+<button class="w-full py-3 bg-secondary text-on-secondary font-label-caps text-label-caps rounded-DEFAULT uppercase tracking-widest hover:bg-secondary-fixed transition-colors">
+                    INITIATE SESSION
+                </button>
+</div>
+</nav>
+<!-- Main Gameplay Canvas -->
+<main class="flex-1 lg:ml-64 flex flex-col md:flex-row items-center justify-center p-container_padding gap-panel_gap min-h-full">
+<!-- Left Panel (High Score & Controls) -->
+<div class="flex flex-col gap-panel_gap order-2 md:order-1 w-full md:w-48 h-full justify-start pt-8">
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">High Score</span>
+<span class="font-label-data text-label-data text-secondary">0459200</span>
+</div>
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-4 flex flex-col mt-auto md:mt-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4 text-center">System Override</span>
+<button class="w-full h-touch_target border border-error text-error font-label-caps text-label-caps rounded-DEFAULT hover:bg-error hover:text-on-error transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">pause_circle</span> PAUSE
+                    </button>
+</div>
+</div>
+<!-- Playfield (10x20 Grid) -->
+<div class="order-1 md:order-2 flex-shrink-0 bg-primary-container p-2 border border-outline-variant rounded-lg relative overflow-hidden shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+<!-- Grid Background pattern -->
+<div class="absolute inset-0 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:calc((100%-18px)/10)_calc((100%-38px)/20)] opacity-20 pointer-events-none" style="margin: 2px;"></div>
+<!-- Actual Grid container -->
+<div class="grid grid-cols-10 grid-rows-20 gap-[2px] w-[280px] h-[560px] md:w-[320px] md:h-[640px] relative z-10">
+<!-- Example blocks (T-piece, L-piece, etc.) -->
+<!-- Active I piece falling -->
+<div class="col-start-4 row-start-3 bg-secondary border border-[#0d94a8] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-5 row-start-3 bg-secondary border border-[#0d94a8] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-6 row-start-3 bg-secondary border border-[#0d94a8] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-7 row-start-3 bg-secondary border border-[#0d94a8] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<!-- Ghost I piece -->
+<div class="col-start-4 row-start-19 border border-dashed border-secondary opacity-30 bg-secondary/10 rounded-sm"></div>
+<div class="col-start-5 row-start-19 border border-dashed border-secondary opacity-30 bg-secondary/10 rounded-sm"></div>
+<div class="col-start-6 row-start-19 border border-dashed border-secondary opacity-30 bg-secondary/10 rounded-sm"></div>
+<div class="col-start-7 row-start-19 border border-dashed border-secondary opacity-30 bg-secondary/10 rounded-sm"></div>
+<!-- Placed blocks (Random bottom stack) -->
+<div class="col-start-1 row-start-20 bg-[#F43F5E] border border-[#9f1239] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-2 row-start-20 bg-[#F43F5E] border border-[#9f1239] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-3 row-start-20 bg-[#F43F5E] border border-[#9f1239] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-2 row-start-19 bg-[#F43F5E] border border-[#9f1239] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-9 row-start-20 bg-[#FBBF24] border border-[#b45309] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-10 row-start-20 bg-[#FBBF24] border border-[#b45309] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-9 row-start-19 bg-[#FBBF24] border border-[#b45309] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+<div class="col-start-10 row-start-19 bg-[#FBBF24] border border-[#b45309] rounded-sm shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"></div>
+</div>
+</div>
+<!-- Right Panel (Stats & HUD) -->
+<div class="flex flex-col gap-panel_gap order-3 w-full md:w-48 h-full justify-start pt-8">
+<!-- Next Piece -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-4 flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase w-full text-left mb-4 border-b border-outline-variant pb-2">Next Buffer</span>
+<div class="grid grid-cols-4 grid-rows-2 gap-[2px] w-[80px] h-[40px] my-2">
+<!-- L Piece -->
+<div class="col-start-2 row-start-1 bg-[#F97316] border border-[#c2410c] rounded-sm"></div>
+<div class="col-start-2 row-start-2 bg-[#F97316] border border-[#c2410c] rounded-sm"></div>
+<div class="col-start-3 row-start-2 bg-[#F97316] border border-[#c2410c] rounded-sm"></div>
+<div class="col-start-4 row-start-2 bg-[#F97316] border border-[#c2410c] rounded-sm"></div>
+</div>
+</div>
+<!-- Hold Piece -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-4 flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase w-full text-left mb-4 border-b border-outline-variant pb-2">Hold Bay</span>
+<div class="grid grid-cols-4 grid-rows-2 gap-[2px] w-[80px] h-[40px] my-2">
+<!-- Square Piece -->
+<div class="col-start-2 row-start-1 bg-[#FBBF24] border border-[#b45309] rounded-sm"></div>
+<div class="col-start-3 row-start-1 bg-[#FBBF24] border border-[#b45309] rounded-sm"></div>
+<div class="col-start-2 row-start-2 bg-[#FBBF24] border border-[#b45309] rounded-sm"></div>
+<div class="col-start-3 row-start-2 bg-[#FBBF24] border border-[#b45309] rounded-sm"></div>
+</div>
+</div>
+<!-- Telemetry Stats -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-4 flex flex-col gap-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Current Score</span>
+<span class="font-label-data text-label-data text-on-surface">0124800</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Clearance Level</span>
+<span class="font-label-data text-label-data text-on-surface">12</span>
+<!-- Progress bar -->
+<div class="w-full h-1 bg-surface-container-highest mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Lines Decrypted</span>
+<span class="font-label-data text-label-data text-on-surface">114</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Touch Controls (Visible only on small screens) -->
+<div class="md:hidden flex justify-between p-container_padding bg-surface border-t border-outline-variant mt-auto">
+<div class="flex gap-2">
+<button class="w-touch_target h-touch_target bg-surface-container-high border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-secondary active:text-on-secondary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-touch_target h-touch_target bg-surface-container-high border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-secondary active:text-on-secondary">
+<span class="material-symbols-outlined">arrow_downward</span>
+</button>
+<button class="w-touch_target h-touch_target bg-surface-container-high border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-secondary active:text-on-secondary">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="w-touch_target h-touch_target bg-surface-container-high border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-secondary active:text-on-secondary font-label-caps text-label-caps">
+                HOLD
+            </button>
+<button class="w-touch_target h-touch_target bg-surface-container-high border border-secondary text-secondary rounded-full flex items-center justify-center active:bg-secondary active:text-on-secondary">
+<span class="material-symbols-outlined">rotate_right</span>
+</button>
+</div>
+</div>
+<!-- Desktop Keyboard Guide (Visible only on larger screens) -->
+<div class="hidden md:flex justify-center p-4 text-on-surface-variant font-label-caps text-label-caps opacity-50 bg-background lg:ml-64 border-t border-outline-variant z-10 relative">
+        [ \u2190 \u2192 \u2193 : NAVIGATE ]   |   [ \u2191 : ROTATE ]   |   [ SPACE : HARD DROP ]   |   [ C : HOLD ]
+    </div>
+</body></html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Session Terminated</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#273649",
+                        "on-primary-container": "#798098",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "error": "#ffb4ab",
+                        "on-primary": "#283044",
+                        "on-surface": "#d5e3fd",
+                        "surface-container-lowest": "#010f21",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-primary": "#565e74",
+                        "primary": "#bec6e0",
+                        "surface-dim": "#051426",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-variant": "#273649",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#3e2d11",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-secondary-fixed": "#001f25",
+                        "on-surface-variant": "#c6c6cd",
+                        "secondary-container": "#00cbe6",
+                        "tertiary-container": "#231500",
+                        "surface": "#051426",
+                        "on-tertiary-container": "#957d5a",
+                        "on-background": "#d5e3fd",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "outline-variant": "#45464d",
+                        "outline": "#909097",
+                        "inverse-on-surface": "#233144",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-high": "#1c2b3e",
+                        "surface-bright": "#2c3a4e",
+                        "secondary-fixed": "#a2eeff",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00515d",
+                        "background": "#051426",
+                        "secondary": "#5de6ff",
+                        "surface-tint": "#bec6e0",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "primary-container": "#0f172a",
+                        "surface-container-low": "#0d1c2f",
+                        "primary-fixed": "#dae2fd",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container": "#122033",
+                        "on-secondary": "#00363e",
+                        "inverse-surface": "#d5e3fd",
+                        "tertiary": "#dec29a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "touch_target": "44px",
+                        "panel_gap": "16px",
+                        "container_padding": "24px",
+                        "grid_gutter": "2px"
+                    },
+                    "fontFamily": {
+                        "label-data": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg": ["Hanken Grotesk", "sans-serif"],
+                        "body-sm": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["Hanken Grotesk", "sans-serif"],
+                        "label-caps": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-data": ["16px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .neon-text-error {
+            text-shadow: 0 0 10px rgba(255, 180, 171, 0.5), 0 0 20px rgba(255, 180, 171, 0.3);
+        }
+        .wireframe-grid {
+            background-image: 
+                linear-gradient(to right, #334155 1px, transparent 1px),
+                linear-gradient(to bottom, #334155 1px, transparent 1px);
+            background-size: calc((100% - 18px) / 10 + 2px) calc((100% - 38px) / 20 + 2px);
+            background-position: -1px -1px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen flex flex-col overflow-hidden selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation Hidden as per guidelines for transactional/dead-end screens -->
+<main class="flex-grow flex items-center justify-center relative p-container_padding">
+<!-- Background Game State Overlay -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none flex justify-center items-center overflow-hidden">
+<div class="w-full max-w-[400px] h-full max-h-[800px] wireframe-grid relative">
+<!-- Mock blocks scattered for background -->
+<div class="absolute bottom-0 left-[20%] w-[10%] h-[5%] bg-secondary/50 border-t-2 border-secondary"></div>
+<div class="absolute bottom-[5%] left-[20%] w-[10%] h-[5%] bg-secondary/50 border-t-2 border-secondary"></div>
+<div class="absolute bottom-0 left-[30%] w-[10%] h-[5%] bg-error/50 border-t-2 border-error"></div>
+<div class="absolute bottom-[10%] left-[50%] w-[30%] h-[5%] bg-tertiary/50 border-t-2 border-tertiary"></div>
+<div class="absolute bottom-[15%] left-[40%] w-[10%] h-[15%] bg-primary/50 border-t-2 border-primary"></div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="relative z-10 w-full max-w-2xl flex flex-col gap-panel_gap">
+<!-- Header Section -->
+<div class="text-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-error neon-text-error tracking-widest uppercase mb-2">SESSION TERMINATED</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant uppercase tracking-widest">Supervisor System Halt</p>
+</div>
+<!-- Report Card Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-panel_gap">
+<!-- Main Score Block -->
+<div class="md:col-span-2 bg-surface-container border border-outline-variant rounded-DEFAULT p-container_padding flex flex-col items-center justify-center relative overflow-hidden group hover:border-secondary transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-50"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4">Final Score</span>
+<div class="font-label-data text-label-data text-5xl md:text-7xl text-secondary font-bold tracking-tighter">
+                        845,200
+                    </div>
+</div>
+<!-- Stats Blocks -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-container_padding flex flex-col justify-between hover:border-primary transition-colors duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Level Reached</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="leaderboard" data-weight="fill" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+</div>
+<div class="font-label-data text-label-data text-4xl text-on-surface">
+                        24
+                    </div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-container_padding flex flex-col justify-between hover:border-tertiary transition-colors duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Lines Cleared</span>
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="clear_all" data-weight="fill" style="font-variation-settings: 'FILL' 1;">clear_all</span>
+</div>
+<div class="font-label-data text-label-data text-4xl text-on-surface">
+                        189
+                    </div>
+</div>
+<!-- Secondary Stats -->
+<div class="md:col-span-2 grid grid-cols-3 gap-panel_gap mt-4">
+<div class="flex flex-col items-center p-4 bg-surface-container-low border border-outline-variant/50 rounded-DEFAULT">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Tetrises</span>
+<span class="font-label-data text-label-data text-secondary">32</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-surface-container-low border border-outline-variant/50 rounded-DEFAULT">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">T-Spins</span>
+<span class="font-label-data text-label-data text-primary">14</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-surface-container-low border border-outline-variant/50 rounded-DEFAULT">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Time</span>
+<span class="font-label-data text-label-data text-tertiary">14:22</span>
+</div>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="flex flex-col sm:flex-row gap-4 mt-8 w-full justify-center">
+<button class="flex items-center justify-center gap-2 bg-secondary text-on-secondary hover:bg-secondary-fixed-dim transition-colors h-touch_target px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps border border-transparent focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background group">
+<span class="material-symbols-outlined text-lg group-hover:rotate-180 transition-transform duration-500" data-icon="replay">replay</span>
+                    REPLAY SESSION
+                </button>
+<button class="flex items-center justify-center gap-2 bg-surface-container border border-outline hover:bg-surface-container-high hover:border-primary transition-colors h-touch_target px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-lg" data-icon="publish">publish</span>
+                    SUBMIT SCORE
+                </button>
+<button class="flex items-center justify-center gap-2 bg-transparent border border-outline-variant hover:bg-surface-container hover:border-outline transition-colors h-touch_target px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-on-surface-variant focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-lg" data-icon="home">home</span>
+                    MAIN MENU
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim dark:bg-surface-dim border-t border-outline-variant flex justify-between items-center w-full px-container_padding py-base docked full-width bottom-0 z-20 relative">
+<div class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant">
+            © 2024 SUPERVISOR_OS. TECHNICAL EXECUTION SECURED.
+        </div>
+<div class="flex gap-4">
+<a class="font-label-caps text-label-caps text-on-tertiary-container hover:text-on-surface opacity-80 hover:opacity-100 transition-colors" href="#">TERMINAL_LOGS</a>
+<a class="font-label-caps text-label-caps text-on-tertiary-container hover:text-on-surface opacity-80 hover:opacity-100 transition-colors" href="#">SYSTEM_STATUS</a>
+<a class="font-label-caps text-label-caps text-on-tertiary-container hover:text-on-surface opacity-80 hover:opacity-100 transition-colors" href="#">LEGAL_DECRYPT</a>
+</div>
+</footer>
+</body></html>
