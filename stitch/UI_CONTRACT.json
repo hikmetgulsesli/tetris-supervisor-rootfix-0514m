@@ -1,0 +1,465 @@
+[
+  {
+    "screenId": "7193749f0a4c45749ee08d29a122e5b4",
+    "screenTitle": "Pause Overlay",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "RESUME OPERATION",
+        "line": 159
+      },
+      {
+        "type": "button",
+        "label": "RESTART SEQUENCE",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "ABORT TO MENU",
+        "line": 165
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "RESUME OPERATION",
+        "line": 159
+      },
+      {
+        "type": "button",
+        "label": "RESTART SEQUENCE",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "ABORT TO MENU",
+        "line": 165
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "dfacf1fb1c0349d897ebff426ac97ba5",
+    "screenTitle": "Controls Help",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 219
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 220
+      },
+      {
+        "type": "button",
+        "label": "Return",
+        "line": 108
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 219
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 220
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Return",
+        "line": 108
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "44c6112dea754fd08f7dde057a8ab74e",
+    "screenTitle": "Game Over",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 200
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 201
+      },
+      {
+        "type": "link",
+        "label": "LEGAL_DECRYPT",
+        "href": "#",
+        "line": 202
+      },
+      {
+        "type": "button",
+        "label": "SESSION",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "SUBMIT SCORE",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 187
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 200
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 201
+      },
+      {
+        "type": "link",
+        "label": "LEGAL_DECRYPT",
+        "href": "#",
+        "line": 202
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "SESSION",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "SUBMIT SCORE",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 187
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 6,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "d0e8795533d14b21ab4ef0b0d7042d1e",
+    "screenTitle": "Main Menu",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 183
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 184
+      },
+      {
+        "type": "link",
+        "label": "LEGAL_DECRYPT",
+        "href": "#",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 111
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 114
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "START NEW SESSION",
+        "line": 142
+      },
+      {
+        "type": "button",
+        "label": "resume",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "CONTROLS",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "LEADERBOARD",
+        "line": 160
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "TERMINAL_LOGS",
+        "href": "#",
+        "line": 183
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM_STATUS",
+        "href": "#",
+        "line": 184
+      },
+      {
+        "type": "link",
+        "label": "LEGAL_DECRYPT",
+        "href": "#",
+        "line": 185
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 111
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 114
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "START NEW SESSION",
+        "line": 142
+      },
+      {
+        "type": "button",
+        "label": "resume",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "CONTROLS",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "LEADERBOARD",
+        "line": 160
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "3fa11f40f3eb4d029a0654c92d13c906",
+    "screenTitle": "Game Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Archives",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Telemetry",
+        "href": "#",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 106
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "INITIATE SESSION",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "PAUSE",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 248
+      },
+      {
+        "type": "button",
+        "label": "arrow_downward",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "arrow_forward",
+        "line": 254
+      },
+      {
+        "type": "button",
+        "label": "HOLD",
+        "line": 259
+      },
+      {
+        "type": "button",
+        "label": "rotate_right",
+        "line": 262
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Archives",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Telemetry",
+        "href": "#",
+        "line": 144
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 106
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "INITIATE SESSION",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "PAUSE",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 248
+      },
+      {
+        "type": "button",
+        "label": "arrow_downward",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "arrow_forward",
+        "line": 254
+      },
+      {
+        "type": "button",
+        "label": "HOLD",
+        "line": 259
+      },
+      {
+        "type": "button",
+        "label": "rotate_right",
+        "line": 262
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 14,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
